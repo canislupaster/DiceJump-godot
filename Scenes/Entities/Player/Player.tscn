@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Player/CameraControls.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/RigidBodyPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Dice/dice.dae" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Player/CameraFollow.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 0.970876, 0.0217789, 0.977739 )
+
+[node name="Player" type="Spatial" index="0"]
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="." index="0"]
+
+transform = Transform( 1, 9.80909e-45, -7.00649e-45, -7.00649e-45, 0.956437, 0.291937, 9.80909e-45, -0.291937, 0.956437, 1.73196, 4.14135, 8.03443 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 50.0
+size = 1.0
+near = 0.05
+far = 100.0
+target = NodePath("../CameraFollow")
+speed = 0.999
+enabled = true
+script = ExtResource( 1 )
+
+[node name="RigidBody" type="RigidBody" parent="." index="1"]
+
+editor/display_folded = true
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 10.2041
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Dice" parent="RigidBody" index="0" instance=ExtResource( 3 )]
+
+[node name="Front" type="CollisionShape" parent="RigidBody" index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0316468, -1 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Back" type="CollisionShape" parent="RigidBody" index="2"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0316468, 1.02192 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Top" type="CollisionShape" parent="RigidBody" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963237, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Bottom" type="CollisionShape" parent="RigidBody" index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.995875, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Left" type="CollisionShape" parent="RigidBody" index="5"]
+
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1, -0.00824654, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Right" type="CollisionShape" parent="RigidBody" index="6"]
+
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -0.00824654, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="CameraFollow" type="Position3D" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 0.956438, 0.291937, 0, -0.291937, 0.956438, 1.73196, 4.14135, 8.03443 )
+script = ExtResource( 4 )
+
+[connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
+
+
