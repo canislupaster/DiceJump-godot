@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player/CameraControls.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/RigidBodyPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Dice/dice.dae" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Loadout/Powerup/None.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Player/CameraFollow.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Player/PowerupTextures.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Loadout/Powerup/None.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Player/CameraFollow.gd" type="Script" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.970876, 0.0217789, 0.977739 )
+extents = Vector3( 0.880593, 0.0217789, 0.884305 )
 
 [node name="Player" type="Spatial" index="0"]
 
@@ -64,162 +65,9 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Dice" parent="RigidBody" index="0" instance=ExtResource( 3 )]
 
-[node name="TopTexture" type="Sprite3D" parent="RigidBody/Dice" index="2"]
+script = ExtResource( 4 )
 
-transform = Transform( 0.369726, 0, 0, 0, -1.61612e-08, 0.369726, 0, -0.369726, -1.61612e-08, 0, 1.01358, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 4 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="BottomTexture" type="Sprite3D" parent="RigidBody/Dice" index="3"]
-
-transform = Transform( 0.382207, 0, 0, 0, -1.67068e-08, 0.382207, 0, -0.382207, -1.67068e-08, 0, -1.00242, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 4 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="LeftTexture" type="Sprite3D" parent="RigidBody/Dice" index="4"]
-
-transform = Transform( -1.67068e-08, -1.67068e-08, 0.382207, -0.382207, 7.30277e-16, -1.67068e-08, 0, -0.382207, -1.67068e-08, -1.02674, -0.00242376, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 4 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="RightTexture" type="Sprite3D" parent="RigidBody/Dice" index="5"]
-
-transform = Transform( -1.67068e-08, -1.67068e-08, 0.382207, -0.382207, 7.30277e-16, -1.67068e-08, 0, -0.382207, -1.67068e-08, 1.01592, -0.00242376, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 4 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="BackTexture" type="Sprite3D" parent="RigidBody/Dice" index="6"]
-
-transform = Transform( 7.30277e-16, -0.382207, -3.34136e-08, -0.382207, 7.30277e-16, -1.67068e-08, 1.67068e-08, 3.34136e-08, -0.382207, 0.0159166, -0.00242376, 1.00535 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 4 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="FrontTexture" type="Sprite3D" parent="RigidBody/Dice" index="7"]
+[node name="FrontTexture" type="Sprite3D" parent="RigidBody/Dice" index="2"]
 
 transform = Transform( 7.30277e-16, -0.382207, -3.34136e-08, -0.382207, 7.30277e-16, -1.67068e-08, 1.67068e-08, 3.34136e-08, -0.382207, 0.0159166, -0.00242376, -1.0054 )
 layers = 1
@@ -243,12 +91,168 @@ transparent = true
 shaded = false
 double_sided = true
 alpha_cut = 0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 vframes = 1
 hframes = 1
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="BackTexture" type="Sprite3D" parent="RigidBody/Dice" index="3"]
+
+transform = Transform( 7.30277e-16, -0.382207, -3.34136e-08, -0.382207, 7.30277e-16, -1.67068e-08, 1.67068e-08, 3.34136e-08, -0.382207, 0.0159166, -0.00242376, 1.00535 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 5 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="TopTexture" type="Sprite3D" parent="RigidBody/Dice" index="4"]
+
+transform = Transform( 0.369726, 0, 0, 0, -1.61612e-08, 0.369726, 0, -0.369726, -1.61612e-08, 0, 1.01358, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 5 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="BottomTexture" type="Sprite3D" parent="RigidBody/Dice" index="5"]
+
+transform = Transform( 0.382207, 0, 0, 0, -1.67068e-08, 0.382207, 0, -0.382207, -1.67068e-08, 0, -1.00242, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 5 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="LeftTexture" type="Sprite3D" parent="RigidBody/Dice" index="6"]
+
+transform = Transform( -1.67068e-08, -1.67068e-08, 0.382207, -0.382207, 7.30277e-16, -1.67068e-08, 0, -0.382207, -1.67068e-08, -1.02674, -0.00242376, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 5 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+
+[node name="RightTexture" type="Sprite3D" parent="RigidBody/Dice" index="7"]
+
+transform = Transform( -1.67068e-08, -1.67068e-08, 0.382207, -0.382207, 7.30277e-16, -1.67068e-08, 0, -0.382207, -1.67068e-08, 1.01592, -0.00242376, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+centered = true
+offset = Vector2( 0, 0 )
+flip_h = false
+flip_v = false
+modulate = Color( 1, 1, 1, 1 )
+opacity = 1.0
+pixel_size = 0.01
+axis = 2
+transparent = true
+shaded = false
+double_sided = true
+alpha_cut = 0
+texture = ExtResource( 5 )
+vframes = 1
+hframes = 1
+frame = 0
+region_enabled = false
+region_rect = Rect2( 0, 0, 0, 0 )
+_sections_unfolded = [ "Animation" ]
 
 [node name="Front" type="CollisionShape" parent="RigidBody" index="1"]
 
@@ -264,13 +268,13 @@ disabled = false
 
 [node name="Top" type="CollisionShape" parent="RigidBody" index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963237, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00322, 0 )
 shape = SubResource( 1 )
 disabled = false
 
 [node name="Bottom" type="CollisionShape" parent="RigidBody" index="4"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.995875, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01421, 0 )
 shape = SubResource( 1 )
 disabled = false
 
@@ -289,7 +293,7 @@ disabled = false
 [node name="CameraFollow" type="Position3D" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 0.956438, 0.291937, 0, -0.291937, 0.956438, 1.73196, 4.14135, 8.03443 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
 

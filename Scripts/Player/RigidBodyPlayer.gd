@@ -1,10 +1,11 @@
 extends RigidBody
 
 onready var cam = get_node("../InterpolatedCamera")
+onready var game = get_node("/root/Game")
 
 const zerovector = Vector3(0,0,0)
 
-var jumpcooldown = 1
+var jumpcooldown = 3
 var livejumpcooldown = 0
 
 var torque = zerovector
@@ -18,6 +19,8 @@ var vel = zerovector
 var speed = 2
 
 var rotateangle = 0.1
+
+signal use_power (newpower, oldpower)
 
 func _ready():
 	pass
@@ -50,18 +53,19 @@ func _integrate_forces(state):
 
 # POWERUPS
 
-var loadout = gamedata.save["loadout"]
 var slot = gamedata.Slot		
 var currentpower = slot.None
 
 func reset_powers():
-	jumpcooldown=1
+	jumpcooldown = 3
 
 func _on_RigidBody_body_shape_entered(body_id, body, body_shape, local_shape):
-	var power = loadout[local_shape]
-	
+	var power = game.get_loadout()[local_shape]
 	if currentpower != power:
 		reset_powers()
 	
+	emit_signal("use_power", power, currentpower)
+	
+	currentpower = power
 	if power == slot.TripleJump:
 		jumpcooldown = 0.5

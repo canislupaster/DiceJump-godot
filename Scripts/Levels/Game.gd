@@ -11,6 +11,15 @@ var levelnode
 signal level_done
 signal game_done
 
+signal loadout_reload(x)
+
+var loadout setget set_loadout, get_loadout
+func set_loadout(x):
+	loadout = x
+	emit_signal("loadout_reload")
+	
+func get_loadout(): return loadout
+
 func load_level(num):
 	if levelnode:
 		levelnode.queue_free()
@@ -33,6 +42,9 @@ func _ready():
 		levels[i] = "res://Scenes/Game/Levels/"+levels[i]
 	
 	levelnum = gamedata.save["level"]
+	loadout = gamedata.save["loadout"]
+	emit_signal("loadout_reload",loadout)
+	
 	load_level(levelnum)
 	
 	self.connect("level_done", self, "_level_done")
