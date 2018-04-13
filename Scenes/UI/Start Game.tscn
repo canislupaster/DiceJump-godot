@@ -11,17 +11,17 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="InputEventAction" id=2]
 
 device = 0
 action = "Space"
 pressed = true
 
-[sub_resource type="ShortCut" id=4]
+[sub_resource type="ShortCut" id=3]
 
-shortcut = SubResource( 3 )
+shortcut = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 
 size = 60
 use_mipmaps = false
@@ -56,7 +56,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0.15625, 0.15625, 0.15625, 1 )
+color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="Button" type="Button" parent="." index="1"]
@@ -78,7 +78,7 @@ size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 toggle_mode = false
 enabled_focus_mode = 2
-shortcut = SubResource( 4 )
+shortcut = SubResource( 3 )
 group = null
 text = "Play"
 flat = true
@@ -102,7 +102,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "DiceJump"
 align = 1
 valign = 1

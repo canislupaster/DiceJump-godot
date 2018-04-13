@@ -2,7 +2,6 @@ extends InterpolatedCamera
 
 var cameravel = Vector2(0,0)
 var sensitivity = 1
-var offset = Vector2(-50,-50)
 
 func _ready():
 	set_process_input(true)

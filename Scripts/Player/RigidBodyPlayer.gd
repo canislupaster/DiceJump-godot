@@ -25,8 +25,8 @@ func _ready():
 
 func moveWASD (input, dirvel):
 		if Input.is_action_pressed(input):
-			var rad = global.degreetoradian(cam.rotation_degrees.x)
-			torque+=(dirvel*speed).rotated(Vector3(0,1,0),-rad)
+			var rad = global.degreetoradian(cam.rotation_degrees.y)
+			torque+=(dirvel*speed).rotated(Vector3(0,1,0),rad)
 
 func _process(delta):
 	vel = global.zerovector
