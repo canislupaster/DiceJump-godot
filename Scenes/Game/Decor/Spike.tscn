@@ -73,7 +73,7 @@ _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Depth", "Emission", "Meta
 
 extents = Vector3( 0.596849, 0.382606, 0.965065 )
 
-[node name="Spike" type="Spatial" index="0"]
+[node name="Spike" type="Spatial"]
 
 _sections_unfolded = [ "Pause", "Visibility" ]
 
