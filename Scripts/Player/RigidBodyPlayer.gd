@@ -3,13 +3,14 @@ extends RigidBody
 onready var cam = get_node("../InterpolatedCamera")
 onready var game = global.get_game()
 
-var initial_transform = self.transform
+var time_speed = 0
+
 const zerovector = Vector3(0,0,0)
 
 var jumpcooldown = 3
 var livejumpcooldown = 0
 
-var death = false
+var respawn = false
 var killable = true setget set_killable, get_killable
 func set_killable(x): killable = x
 func get_killable(): return killable
@@ -30,15 +31,20 @@ var rotateangle = 0.1
 
 signal use_power (newpower, oldpower)
 
-func _death(reason):
-	death = true
+func _death (reason):
+	respawn = true
 func _checkpoint ():
-	initial_transform = self.transform
+	game.initial_transform = self.transform
 
 
 func _ready():
 	game.connect("death", self, "_death")
 	game.connect("checkpoint", self, "_checkpoint")
+	
+	if gamedata.save["transform"]:
+		game.initial_transform = gamedata.save["transform"]
+		respawn = true
+	else: game.initial_transform = self.transform
 
 func moveWASD (input, dirvel):
 		if Input.is_action_pressed(input):
@@ -61,37 +67,27 @@ func _process(delta):
 	moveWASD("move_right",vright)
 	
 	if livejumpcooldown > 0:
-		livejumpcooldown = livejumpcooldown - delta
+		livejumpcooldown = livejumpcooldown - (delta/time_speed)
 
 func _integrate_forces(state):
 	state.apply_torque_impulse(torque)
 	set_axis_velocity(vel)
 	
-	if death:
-		state.transform = initial_transform
+	if respawn:
+		state.transform = game.initial_transform
 		state.linear_velocity = Vector3(0,0,0)
 		state.angular_velocity = Vector3(0,0,0)
 		
-		death = false
+		respawn = false
 
 # POWERUPS
 
-var slot = gamedata.Slot
-var currentpower = slot.None
-
-func reset_powers():
-	jumpcooldown = 3
+var currentpower = gamedata.Slot.None
 
 func _on_RigidBody_body_shape_entered(body_id, body, body_shape, local_shape):
 	var power = game.get_loadout()[local_shape]
-	if currentpower != power:
-		reset_powers()
 	
-	emit_signal("use_power", power, currentpower)
+	emit_signal("use_power", self, power, currentpower)
 	
 	currentpower = power
-	if power == slot.TripleJump:
-		jumpcooldown = 0.5
-		
-	if power == slot.Shield:
-		killable=false
+	

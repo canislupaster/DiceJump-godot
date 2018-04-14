@@ -14,4 +14,4 @@ func _ready():
 		$AnimationPlayer.play("UpDown",1,time_speed)
 
 func _on_DeathArea_body_entered(body):
-	global.get_game().try_kill_player_rb(body)
+	global.get_game().try_kill_player_rb(body, "Why did you do that? Do you know that spikes are death?")

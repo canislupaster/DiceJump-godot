@@ -8,6 +8,8 @@ var levels = ["Tests/PlayerTest.tscn"]
 var levelnum
 var levelnode
 
+var initial_transform
+
 signal level_done
 signal game_done
 
@@ -24,9 +26,9 @@ func set_loadout(x):
 func get_loadout(): return loadout
 
 func get_gamesave():
-	return {"level":levelnum, "loadout":loadout}
+	return {"level":levelnum, "transform":initial_transform, "loadout":loadout}
 
-func game_done():
+func _game_done():
 	gamedata.set_save(gamedata.defaultsave)
 
 func load_level(num):
@@ -47,10 +49,13 @@ func _level_done():
 	levelnum=levelnum+1
 	load_level(levelnum)
 
-func try_kill_player_rb(rb):
-	if rb is preload("res://Scripts/Player/RigidBodyPlayer.gd"):
+func is_player_rb(rb):
+	return rb is preload("res://Scripts/Player/RigidBodyPlayer.gd")
+	
+func try_kill_player_rb(rb,reason):
+	if is_player_rb(rb):
 		if rb.get_killable():
-			self.emit_signal("death", "Spikes killed you real bad.")
+			self.emit_signal("death", reason)
 		else: rb.set_killable(true)
 
 func lock_mouse():
@@ -70,5 +75,6 @@ func _ready():
 	load_level(levelnum)
 	
 	self.connect("level_done", self, "_level_done")
+	self.connect("game_done", self, "_game_done")
 	
 	lock_mouse()

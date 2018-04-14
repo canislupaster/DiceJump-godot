@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player/CameraControls.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/RigidBodyPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Dice/dice.dae" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Player/PowerupTextures.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Loadout/Powerup/None.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/Player/CameraFollow.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player/Powers.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player/CameraFollow.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -33,7 +34,9 @@ speed = 0.999
 enabled = true
 script = ExtResource( 1 )
 
-[node name="RigidBody" type="RigidBody" parent="." index="1"]
+[node name="RigidBody" type="RigidBody" parent="." index="1" groups=[
+"timeslow",
+]]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -291,10 +294,14 @@ transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -0.0
 shape = SubResource( 1 )
 disabled = false
 
+[node name="Powers" type="Node" parent="RigidBody" index="7"]
+
+script = ExtResource( 6 )
+
 [node name="CameraFollow" type="Position3D" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 0.956438, 0.291937, 0, -0.291937, 0.956438, -0.101664, 4.14135, 11.0382 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
 

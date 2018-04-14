@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Decor/Spikes.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/Decor/spikes.obj" type="ArrayMesh" id=2]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 
 resource_name = "UpDown"
 length = 2.0
@@ -17,7 +17,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, -1, 0, 0, 0, 0, 1, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 
 render_priority = 0
 flags_transparent = false
@@ -69,15 +69,17 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Depth", "Emission", "Metallic", "Refraction", "Roughness", "Subsurf Scatter", "Vertex Color" ]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=3]
 
 extents = Vector3( 0.596849, 0.382606, 0.965065 )
 
-[node name="Spike" type="Spatial" index="0"]
+[node name="Spike" type="Spatial"]
 
 _sections_unfolded = [ "Pause", "Visibility" ]
 
-[node name="StaticBody" type="StaticBody" parent="." index="0"]
+[node name="StaticBody" type="StaticBody" parent="." index="0" groups=[
+"timeslow",
+]]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12926, 0 )
 input_ray_pickable = true
@@ -98,7 +100,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/UpDown = SubResource( 4 )
+anims/UpDown = SubResource( 1 )
 blend_times = [  ]
 
 [node name="SpikeGeo" type="MeshInstance" parent="StaticBody" index="1"]
@@ -114,13 +116,13 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 2 )
 skeleton = NodePath("..")
-material/0 = SubResource( 3 )
+material/0 = SubResource( 2 )
 _sections_unfolded = [ "Geometry", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390719, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="DeathArea" type="Area" parent="StaticBody" index="3"]
@@ -150,7 +152,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody/DeathArea" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390719, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 
 [connection signal="body_entered" from="StaticBody/DeathArea" to="StaticBody" method="_on_DeathArea_body_entered"]

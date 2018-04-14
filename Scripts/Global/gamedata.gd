@@ -1,10 +1,10 @@
 extends Node
 
-enum Slot {None, TripleJump, Shield}
-const slotarray = ["None", "TripleJump", "Shield"]
+enum Slot {None, TripleJump, Shield, SlowTime}
+const slotarray = ["None", "TripleJump", "Shield", "SlowTime"]
 
 var savepath = "user://save.txt"
-var defaultsave = {"level":0, "loadout":[Shield,TripleJump,Shield,TripleJump,Shield,TripleJump]}
+var defaultsave = {"level":0, "transform":null, "loadout":[SlowTime,SlowTime,SlowTime,SlowTime,SlowTime,SlowTime]}
 var save = defaultsave setget set_save, get_save
 func set_save(x):
 	save=x
