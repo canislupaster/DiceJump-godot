@@ -12,7 +12,8 @@ config_version=3
 
 config/name="DiceJump"
 run/main_scene="res://Scenes/UI/Start Game.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://Assets/UI/Images/Banner/banner0000.png"
+config/icon="res://Assets/UI/Images/Icon/icon.png"
 
 [autoload]
 
@@ -21,7 +22,8 @@ gamedata="*res://Scripts/Global/gamedata.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-git-control.funabab", "toyman.terraineditor" )
+Enabled=true
+enabled=PoolStringArray( "godot-git-control.funabab", "zylann.hterrain" )
 
 [input]
 
@@ -39,6 +41,8 @@ game_pause=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name
  ]
 game_toggle_powerup=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
  ]
+game_respawn=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
 
 [physics]
 
@@ -46,4 +50,5 @@ game_toggle_powerup=[ Object(InputEventKey,"resource_local_to_scene":false,"reso
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

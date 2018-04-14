@@ -4,7 +4,7 @@ enum Slot {None, TripleJump, Shield, SlowTime}
 const slotarray = ["None", "TripleJump", "Shield", "SlowTime"]
 
 var savepath = "user://save.txt"
-var defaultsave = {"level":0, "transform":null, "loadout":[SlowTime,SlowTime,SlowTime,SlowTime,SlowTime,SlowTime]}
+var defaultsave = {"level":0, "transform":null, "loadout":[None, None, None, None, None, None]}
 var save = defaultsave setget set_save, get_save
 func set_save(x):
 	save=x

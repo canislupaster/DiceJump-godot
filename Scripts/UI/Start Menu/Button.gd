@@ -16,4 +16,6 @@ func _ready():
 
 
 func _on_Button_pressed():
+	text="LOADING..."
 	global.changescene("res://Scenes/Game/Game.tscn")
+	text="Play"

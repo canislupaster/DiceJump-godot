@@ -21,11 +21,7 @@ func powerup_pressed(x):
 	var newpow
 	if power+1 >= gamedata.Slot.size():
 		newpow = 0
-		print ("exceeded, back to 0")
-	else:
-		newpow = power+1
-		print ("onwards to "+str(newpow))
-	
+	else: newpow = power+1
 	var loadout = game.get_loadout()
 	loadout[side] = newpow
 	game.set_loadout(loadout)

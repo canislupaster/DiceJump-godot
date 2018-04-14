@@ -1,16 +1,17 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/UI/Start Menu/Button.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/UI/Start Menu/How to Play.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/UI/Start Menu/Save and Quit.gd" type="Script" id=4]
+[ext_resource path="res://Assets/UI/Images/Banner/banner0000.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/UI/Start Menu/Button.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/Start Menu/How to Play.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/Start Menu/Save and Quit.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 50
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="InputEventAction" id=2]
@@ -22,14 +23,6 @@ pressed = true
 [sub_resource type="ShortCut" id=3]
 
 shortcut = SubResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-
-size = 60
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="Start Game" type="Control"]
 
@@ -61,7 +54,24 @@ size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
-[node name="Play" type="Button" parent="." index="1"]
+[node name="TextureRect" type="TextureRect" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Play" type="Button" parent="." index="2"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -86,10 +96,10 @@ group = null
 text = "Play"
 flat = true
 align = 1
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="How to Play" type="Button" parent="." index="2"]
+[node name="How to Play" type="Button" parent="." index="3"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -114,7 +124,7 @@ group = null
 text = "How to Play"
 flat = true
 align = 1
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="AcceptDialog" type="AcceptDialog" parent="How to Play" index="0"]
@@ -146,7 +156,7 @@ Have fun!"
 dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog", "Popup" ]
 
-[node name="Save and Quit" type="Button" parent="." index="3"]
+[node name="Save and Quit" type="Button" parent="." index="4"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -171,33 +181,8 @@ group = null
 text = "Save and Quit"
 flat = true
 align = 1
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="Label" type="Label" parent="." index="4"]
-
-anchor_left = 0.5
-anchor_top = 0.0
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -512.0
-margin_top = 80.0
-margin_right = 508.0
-margin_bottom = 150.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
-text = "DiceJump"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Rect", "custom_fonts" ]
 
 [connection signal="pressed" from="Play" to="Play" method="_on_Button_pressed"]
 
