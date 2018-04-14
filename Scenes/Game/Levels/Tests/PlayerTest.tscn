@@ -155,7 +155,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "Fog", "Glow", "Glow/levels", "SS Reflections", "SSAO", "Tonemap" ]
 
-[node name="Level" type="Spatial" index="0"]
+[node name="Level" type="Spatial"]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 

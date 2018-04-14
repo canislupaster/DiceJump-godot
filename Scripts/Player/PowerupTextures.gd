@@ -4,21 +4,16 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 onready var children = [$FrontTexture, $BackTexture, $TopTexture, $BottomTexture, $LeftTexture, $RightTexture]
-
-func loadout_tostring (x):
-	return gamedata.slotarray[x]
+onready var game = global.get_game()
 
 func _loadout_reload(x):
 	var i2 = 0
 	for i in x:
-		children[i2].set_texture(load("res://Assets/Loadout/Powerup/"+loadout_tostring(i)+".png"))
+		children[i2].set_texture(load("res://Assets/Loadout/Powerup/"+game.loadout_tostring(i)+".png"))
 		i2+=1
 
 func _ready():
-	var game = global.get_game()
 	game.connect("loadout_reload",self,"_loadout_reload")
-
-	_loadout_reload(game.get_loadout())
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

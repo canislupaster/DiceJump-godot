@@ -7,7 +7,7 @@ path="res://.import/dice.dae-e32f499d27628c57c57fd918bef942ee.scn"
 [deps]
 
 source_file="res://Assets/Dice/dice.dae"
-source_md5="104cf2758f453a7bb2bc5a76756b6e42"
+source_md5="5ad2c91cb692f5588b1e1be655a1a0bb"
 
 dest_files=[ "res://.import/dice.dae-e32f499d27628c57c57fd918bef942ee.scn" ]
 dest_md5="1f0d67064c72eb26e22febe1d0de52c7"

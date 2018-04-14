@@ -10,6 +10,7 @@ var levelnode
 
 var initial_transform
 
+
 signal level_done
 signal game_done
 
@@ -22,8 +23,10 @@ signal loadout_reload(x)
 var loadout setget set_loadout, get_loadout
 func set_loadout(x):
 	loadout = x
-	emit_signal("loadout_reload")
+	emit_signal("loadout_reload", x)
 func get_loadout(): return loadout
+func loadout_tostring (x):
+	return gamedata.slotarray[x]
 
 func get_gamesave():
 	return {"level":levelnum, "transform":initial_transform, "loadout":loadout}
@@ -58,11 +61,26 @@ func try_kill_player_rb(rb,reason):
 			self.emit_signal("death", reason)
 		else: rb.set_killable(true)
 
-func lock_mouse():
+func focus():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
 
-func unlock_mouse():
+func unfocus():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	
+var control_open = 0 setget set_control_open, get_control_open
+func set_control_open(x):
+	if x > 0:
+		control_open+=1
+	else:
+		control_open-=1
+	
+	if control_open > 0:
+		unfocus()
+	else: focus()
+
+func get_control_open(): return control_open
 
 func _ready():
 	for i in range(levels.size()):
@@ -77,4 +95,5 @@ func _ready():
 	self.connect("level_done", self, "_level_done")
 	self.connect("game_done", self, "_game_done")
 	
-	lock_mouse()
+	emit_signal("loadout_reload",loadout)
+	focus()

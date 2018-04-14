@@ -5,7 +5,6 @@ extends ColorRect
 # var b = "textvar"
 
 func _ready():
-	visible = false
 	set_process_input(true)
 	pause_mode=PAUSE_MODE_PROCESS
 
@@ -14,9 +13,7 @@ func _input(event):
 		var game = global.get_game()
 		if visible:
 			visible = false
-			game.lock_mouse()
-			get_tree().paused = false
+			game.set_control_open(0)
 		else:
 			visible = true #toggle visiblility
-			game.unlock_mouse() #fix mouse
-			get_tree().paused = true
+			game.set_control_open(1)

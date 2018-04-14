@@ -1,23 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Levels/Game.gd" type="Script" id=1]
-[ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scripts/UI/Pause Menu/Overlay.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/UI/Pause Menu/Quit to main menu.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/UI/Powerup Chooser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/UI/Pause Menu/Overlay.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/Pause Menu/Quit to main menu.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 50
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="Overlay" type="Control" parent="." index="0"]
+[node name="Powerup Chooser" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Overlay" type="Control" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -55,8 +58,9 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Focus", "custom_fonts" ]
 
-[node name="PauseOverlay" type="ColorRect" parent="." index="1"]
+[node name="PauseOverlay" type="ColorRect" parent="." index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.8
 anchor_right = 1.0
@@ -71,8 +75,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 0.502784 )
-script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+script = ExtResource( 4 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Visibility" ]
 
 [node name="Button" type="Button" parent="PauseOverlay" index="0"]
 
@@ -99,7 +103,7 @@ group = null
 text = "Quit to Main Menu"
 flat = true
 align = 1
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="pressed" from="PauseOverlay/Button" to="PauseOverlay/Button" method="_on_Button_pressed"]
