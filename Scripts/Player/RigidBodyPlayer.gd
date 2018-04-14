@@ -1,12 +1,14 @@
 extends RigidBody
 
 onready var cam = get_node("../InterpolatedCamera")
-onready var game = get_node("/root/Game")
+onready var game = global.get_game()
 
+var initial_transform = self.transform
 const zerovector = Vector3(0,0,0)
 
 var jumpcooldown = 3
 var livejumpcooldown = 0
+var death = false
 
 var torque = zerovector
 var vjump = Vector3(0,10,0)
@@ -22,9 +24,15 @@ var rotateangle = 0.1
 
 signal use_power (newpower, oldpower)
 
-func _ready():
-	pass
+func _death(reason):
+	death = true
+func _checkpoint ():
+	initial_transform = self.transform
 
+
+func _ready():
+	game.connect("death", self, "_death")
+	game.connect("checkpoint", self, "_checkpoint")
 
 func moveWASD (input, dirvel):
 		if Input.is_action_pressed(input):
@@ -50,6 +58,13 @@ func _process(delta):
 func _integrate_forces(state):
 	state.apply_torque_impulse(torque)
 	set_axis_velocity(vel)
+	
+	if death:
+		state.transform = initial_transform
+		state.linear_velocity = Vector3(0,0,0)
+		state.angular_velocity = Vector3(0,0,0)
+		
+		death = false
 
 # POWERUPS
 

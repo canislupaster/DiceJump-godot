@@ -19,4 +19,4 @@ func _ready():
 
 func _on_Area_body_entered(body):
 	if body is preload("res://Scripts/Player/RigidBodyPlayer.gd"):
-		get_node("/root/Game").emit_signal("level_done")
+		global.get_game().emit_signal("level_done")

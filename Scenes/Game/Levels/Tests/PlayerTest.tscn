@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Entities/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Game/Goal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game/Decor/Spike.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Game/Goal.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneShape" id=1]
 
@@ -109,8 +110,14 @@ skeleton = NodePath("..")
 material/0 = SubResource( 3 )
 _sections_unfolded = [ "material" ]
 
-[node name="Goal" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Spike" parent="." index="2" groups=[
+"updown_spikes",
+] instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7533, 5.21623, -12.0604 )
+transform = Transform( 0.266766, 0, -3.04915, 0, 3.0608, 0, 3.04915, 0, 0.266766, 2.30894, 1.53586, -13.7058 )
+
+[node name="Goal" parent="." index="3" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7533, 5.21623, -22.8957 )
 
 

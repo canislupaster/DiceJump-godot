@@ -15,7 +15,7 @@ func _loadout_reload(x):
 		i2+=1
 
 func _ready():
-	var game = get_node("/root/Game")
+	var game = global.get_game()
 	game.connect("loadout_reload",self,"_loadout_reload")
 
 	_loadout_reload(game.get_loadout())

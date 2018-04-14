@@ -11,7 +11,11 @@ var levelnode
 signal level_done
 signal game_done
 
+signal death(reason)
+signal checkpoint
+
 signal loadout_reload(x)
+
 
 var loadout setget set_loadout, get_loadout
 func set_loadout(x):

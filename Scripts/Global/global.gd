@@ -4,6 +4,10 @@ extends Node
 # var a = 2
 # var b = "textvar"
 var zerovector = Vector3(0,0,0)
+const player = "res://Scripts/Player/RigidBodyPlayer.gd"
+
+func get_game():
+	return get_node("/root/Game")
 
 func degreetoradian (deg):
 	return deg*(PI/180)
