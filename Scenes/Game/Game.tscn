@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Levels/Game.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/UI/Pause Menu/Overlay.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/Pause Menu/Quit to main menu.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -38,8 +40,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 72.0
-margin_bottom = 24.0
+margin_right = 148.0
+margin_bottom = 60.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -52,5 +54,54 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Focus", "custom_fonts" ]
+
+[node name="PauseOverlay" type="ColorRect" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.999969
+margin_right = 6.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.502784 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+
+[node name="Button" type="Button" parent="PauseOverlay" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -49.5
+margin_right = 390.0
+margin_bottom = 26.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit to Main Menu"
+flat = true
+align = 1
+script = ExtResource( 4 )
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="pressed" from="PauseOverlay/Button" to="PauseOverlay/Button" method="_on_Button_pressed"]
 
 

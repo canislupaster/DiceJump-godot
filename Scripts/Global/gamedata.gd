@@ -1,11 +1,11 @@
 extends Node
 
-enum Slot {None, TripleJump}
-const slotarray = ["None", "TripleJump"]
+enum Slot {None, TripleJump, Shield}
+const slotarray = ["None", "TripleJump", "Shield"]
 
 var savepath = "user://save.bin"
 
-var save = {"level":0, "loadout":[None,TripleJump,None,TripleJump,None,TripleJump]} setget set_save, get_save
+var save = {"level":0, "loadout":[Shield,TripleJump,Shield,TripleJump,Shield,TripleJump]} setget set_save, get_save
 func set_save(x):
 	save=x
 	var savegame = File.new()

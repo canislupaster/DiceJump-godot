@@ -14,5 +14,4 @@ func _ready():
 		$AnimationPlayer.play("UpDown",1,time_speed)
 
 func _on_DeathArea_body_entered(body):
-	if body is preload("res://Scripts/Player/RigidBodyPlayer.gd"):
-		global.get_game().emit_signal("death", "Spikes killed you real bad.")
+	global.get_game().try_kill_player_rb(body)

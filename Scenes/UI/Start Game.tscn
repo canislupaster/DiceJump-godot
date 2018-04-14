@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/UI/Fonts/GL-Nummernschild-Eng.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/UI/Start Menu/Button.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/Start Menu/Save and Quit.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -29,7 +30,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Start Game" type="Control"]
+[node name="Start Game" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -59,15 +60,16 @@ size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
-[node name="Button" type="Button" parent="." index="1"]
+[node name="Play" type="Button" parent="." index="1"]
 
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -188.0
-margin_top = -300.0
+margin_top = -316.0
 margin_right = 188.0
+margin_bottom = -260.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -86,7 +88,35 @@ align = 1
 script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="Save and Quit" type="Button" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -188.0
+margin_top = -196.0
+margin_right = 188.0
+margin_bottom = -140.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = SubResource( 3 )
+group = null
+text = "Save and Quit"
+flat = true
+align = 1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="Label" type="Label" parent="." index="3"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -111,6 +141,8 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Rect", "custom_fonts" ]
 
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Play" to="Play" method="_on_Button_pressed"]
+
+[connection signal="pressed" from="Save and Quit" to="Save and Quit" method="_on_Save_and_Quit_pressed"]
 
 

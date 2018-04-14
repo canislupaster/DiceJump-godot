@@ -21,8 +21,10 @@ var loadout setget set_loadout, get_loadout
 func set_loadout(x):
 	loadout = x
 	emit_signal("loadout_reload")
-	
 func get_loadout(): return loadout
+
+func get_gamesave():
+	return {"level":levelnum, "loadout":loadout}
 
 func load_level(num):
 	if levelnode:
@@ -41,6 +43,19 @@ func _level_done():
 	levelnum=levelnum+1
 	load_level(levelnum)
 
+func try_kill_player_rb(rb):
+	if rb is preload("res://Scripts/Player/RigidBodyPlayer.gd"):
+		if rb.get_killable():
+			self.emit_signal("death", "Spikes killed you real bad.")
+		else: rb.set_killable(true)
+
+func lock_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func unlock_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _ready():
 	for i in range(levels.size()):
 		levels[i] = "res://Scenes/Game/Levels/"+levels[i]
@@ -53,10 +68,4 @@ func _ready():
 	
 	self.connect("level_done", self, "_level_done")
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+	lock_mouse()

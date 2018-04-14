@@ -8,9 +8,15 @@ const zerovector = Vector3(0,0,0)
 
 var jumpcooldown = 3
 var livejumpcooldown = 0
+
 var death = false
+var killable = true setget set_killable, get_killable
+func set_killable(x): killable = x
+func get_killable(): return killable
 
 var torque = zerovector
+var angular_limit = Vector3(20,20,20)
+
 var vjump = Vector3(0,10,0)
 const vforward = Vector3(-5,0,0)
 const vbackward = Vector3(5,0,0)
@@ -37,6 +43,8 @@ func _ready():
 func moveWASD (input, dirvel):
 		if Input.is_action_pressed(input):
 			var rad = global.degreetoradian(cam.rotation_degrees.y)
+			
+			
 			torque+=(dirvel*speed).rotated(Vector3(0,1,0),rad)
 
 func _process(delta):
@@ -68,7 +76,7 @@ func _integrate_forces(state):
 
 # POWERUPS
 
-var slot = gamedata.Slot		
+var slot = gamedata.Slot
 var currentpower = slot.None
 
 func reset_powers():
@@ -84,3 +92,6 @@ func _on_RigidBody_body_shape_entered(body_id, body, body_shape, local_shape):
 	currentpower = power
 	if power == slot.TripleJump:
 		jumpcooldown = 0.5
+		
+	if power == slot.Shield:
+		killable=false

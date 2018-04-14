@@ -1,7 +1,7 @@
 extends Position3D
 
 onready var offsetpos = translation
-var rot_offset = 75 setget set_rot_offset, get_rot_offset #90
+var rot_offset = 0 setget set_rot_offset, get_rot_offset #90
 
 func set_rot_offset (x): rot_offset = x
 func get_rot_offset(): return rot_offset
