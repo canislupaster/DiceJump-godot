@@ -26,6 +26,9 @@ func get_loadout(): return loadout
 func get_gamesave():
 	return {"level":levelnum, "loadout":loadout}
 
+func game_done():
+	gamedata.set_save(gamedata.defaultsave)
+
 func load_level(num):
 	if levelnode:
 		levelnode.queue_free()
@@ -37,7 +40,8 @@ func load_level(num):
 		var level = load(levelpath).instance()
 		add_child(level)
 		levelnode = level
-	else: emit_signal("game_done")
+	else:
+		emit_signal("game_done")
 
 func _level_done():
 	levelnum=levelnum+1
@@ -50,7 +54,6 @@ func try_kill_player_rb(rb):
 		else: rb.set_killable(true)
 
 func lock_mouse():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func unlock_mouse():

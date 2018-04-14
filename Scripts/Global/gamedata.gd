@@ -4,8 +4,8 @@ enum Slot {None, TripleJump, Shield}
 const slotarray = ["None", "TripleJump", "Shield"]
 
 var savepath = "user://save.bin"
-
-var save = {"level":0, "loadout":[Shield,TripleJump,Shield,TripleJump,Shield,TripleJump]} setget set_save, get_save
+var defaultsave = {"level":0, "loadout":[Shield,TripleJump,Shield,TripleJump,Shield,TripleJump]}
+var save = defaultsave setget set_save, get_save
 func set_save(x):
 	save=x
 	var savegame = File.new()
