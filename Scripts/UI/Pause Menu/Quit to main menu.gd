@@ -18,3 +18,4 @@ func _ready():
 func _on_Button_pressed():
 	gamedata.set_save(global.get_game().get_gamesave())
 	global.changescene("res://Scenes/UI/Start Game.tscn")
+	get_tree().paused = false

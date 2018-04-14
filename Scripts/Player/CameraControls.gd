@@ -7,7 +7,7 @@ func _ready():
 	set_process_input(true)
 
 func _process(delta):
-	rotation_degrees.x += cameravel.y
+	rotation_degrees.x += -cameravel.y
 	rotation_degrees.y += cameravel.x
 	
 func _input(event):

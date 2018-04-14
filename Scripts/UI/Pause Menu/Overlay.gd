@@ -7,6 +7,7 @@ extends ColorRect
 func _ready():
 	visible = false
 	set_process_input(true)
+	pause_mode=PAUSE_MODE_PROCESS
 
 func _input(event):
 	if event.is_action_pressed("game_pause"):
@@ -14,6 +15,8 @@ func _input(event):
 		if visible:
 			visible = false
 			game.lock_mouse()
+			get_tree().paused = false
 		else:
 			visible = true #toggle visiblility
 			game.unlock_mouse() #fix mouse
+			get_tree().paused = true
