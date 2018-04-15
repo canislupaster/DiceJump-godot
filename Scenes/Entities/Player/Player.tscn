@@ -13,7 +13,7 @@
 
 extents = Vector3( 0.880593, 0.0217789, 0.884305 )
 
-[node name="Player" type="Spatial" index="0"]
+[node name="Player" type="Spatial"]
 
 [node name="InterpolatedCamera" type="InterpolatedCamera" parent="." index="0"]
 
