@@ -13,6 +13,7 @@ func set_time_scale(scale):
 func reset_powers(who):
 	who.jumpcooldown = 3
 	set_time_scale(1)
+	who.speed = 2
 
 func _use_power(who,power,currentpower):
 	if currentpower != power:
@@ -26,6 +27,9 @@ func _use_power(who,power,currentpower):
 		
 	if power == slot.SlowTime:
 		set_time_scale(0.4)
+		
+	if power == slot.Speed:
+		who.speed = 5
 
 func _ready():
 	player.connect("use_power", self, "_use_power")

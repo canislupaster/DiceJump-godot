@@ -173,7 +173,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Emission", "Flags", "Parameters", "Proximity Fade", "Vertex Color" ]
 
-[node name="Goal" type="Spatial"]
+[node name="Goal" type="Spatial" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 

@@ -15,7 +15,6 @@ func _loadout_reload(x):
 		i2+=1
 
 func powerup_pressed(x):
-	print ("pressed")
 	var power = x.get_meta("powerup_enum")
 	var side = x.get_meta("powerup_sidenum")
 	var newpow

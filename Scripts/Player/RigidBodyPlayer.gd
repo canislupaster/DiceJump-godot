@@ -3,7 +3,7 @@ extends RigidBody
 onready var cam = get_node("../InterpolatedCamera")
 onready var game = global.get_game()
 
-var time_speed = 0
+var time_speed = 1
 
 const zerovector = Vector3(0,0,0)
 

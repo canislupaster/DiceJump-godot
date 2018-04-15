@@ -1,7 +1,7 @@
 extends Node
 
-enum Slot {None, TripleJump, Shield, SlowTime}
-const slotarray = ["None", "TripleJump", "Shield", "SlowTime"]
+enum Slot {None, TripleJump, Shield, SlowTime, Speed}
+const slotarray = ["None", "TripleJump", "Shield", "SlowTime", "Speed"]
 
 var savepath = "user://save.txt"
 var defaultsave = {"level":0, "transform":null, "loadout":[None, None, None, None, None, None]}
