@@ -24,7 +24,7 @@ pressed = true
 
 shortcut = SubResource( 2 )
 
-[node name="Start Game" type="Control"]
+[node name="Start Game" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -150,6 +150,7 @@ Hit Esc to pause/quit.
 Hit P to manage powerups.
 And hit R to respawn.
 
+The goal of every level is to get to the big white moving dots aka the goal.
 Powerups are stuff like triplejump, timeslow, etc. You can add them to sides of the dice in the gui to equip them.
 To use powerups, simply put the side you want to use facedown on the ground. You now have it on!
 Beware the fact that when you roll around, you are switching powerups.

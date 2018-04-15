@@ -29,7 +29,7 @@ current = false
 fov = 50.0
 size = 1.0
 near = 0.05
-far = 100.0
+far = 500.0
 target = NodePath("../CameraFollow")
 speed = 0.999
 enabled = true
@@ -69,6 +69,7 @@ _sections_unfolded = [ "Angular", "Collision" ]
 
 [node name="Dice" type="MeshInstance" parent="RigidBody" index="0"]
 
+editor/display_folded = true
 layers = 1
 material_override = null
 cast_shadow = 1

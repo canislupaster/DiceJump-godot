@@ -57,6 +57,9 @@ func load_level(num):
 func _level_load(l):
 	add_child(l)
 	levelnode = l
+	
+	emit_signal("loadout_reload",loadout)
+	focus()
 
 func _level_done():
 	levelnum=levelnum+1
@@ -67,9 +70,7 @@ func is_player_rb(rb):
 	
 func try_kill_player_rb(rb,reason):
 	if is_player_rb(rb):
-		if rb.get_killable():
-			self.emit_signal("death", reason)
-		else: rb.set_killable(true)
+		rb.emit_signal("try_kill", reason)
 	
 var control_open = 0 setget set_control_open, get_control_open
 func set_control_open(x):
@@ -94,9 +95,5 @@ func _ready():
 	
 	levelnum = gamedata.save["level"]
 	loadout = gamedata.save["loadout"]
-	emit_signal("loadout_reload",loadout)
 	
 	load_level(levelnum)
-	
-	emit_signal("loadout_reload",loadout)
-	focus()

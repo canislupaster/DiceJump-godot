@@ -11,9 +11,6 @@ var jumpcooldown = 3
 var livejumpcooldown = 0
 
 var respawn = false
-var killable = true setget set_killable, get_killable
-func set_killable(x): killable = x
-func get_killable(): return killable
 
 var torque = zerovector
 var angular_limit = Vector3(20,20,20)
@@ -30,6 +27,7 @@ var speed = 2
 var rotateangle = 0.1
 
 signal use_power (newpower, oldpower)
+signal try_kill (reason)
 
 func _death (reason):
 	respawn = true
@@ -40,6 +38,7 @@ func _checkpoint ():
 func _ready():
 	game.connect("death", self, "_death")
 	game.connect("checkpoint", self, "_checkpoint")
+	#self.connect("try_kill", self, "_try_kill")
 	
 	if gamedata.save["transform"]:
 		game.initial_transform = gamedata.save["transform"]
@@ -54,9 +53,6 @@ func moveWASD (input, dirvel):
 			torque+=(dirvel*speed).rotated(Vector3(0,1,0),rad)
 
 func _process(delta):
-	vel = global.zerovector
-	torque = global.zerovector
-	
 	if Input.is_action_pressed("move_jump") and livejumpcooldown <= 0:
 		livejumpcooldown = jumpcooldown
 		vel += vjump
@@ -72,6 +68,9 @@ func _process(delta):
 func _integrate_forces(state):
 	state.apply_torque_impulse(torque)
 	set_axis_velocity(vel)
+	
+	vel = global.zerovector
+	torque = global.zerovector
 	
 	if respawn:
 		state.transform = game.initial_transform
