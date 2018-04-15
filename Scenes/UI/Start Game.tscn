@@ -148,6 +148,7 @@ resizable = true
 dialog_text = "Use WASD to control character.
 Hit Esc to pause/quit.
 Hit P to manage powerups.
+And hit R to respawn.
 
 Powerups are stuff like triplejump, timeslow, etc. You can add them to sides of the dice in the gui to equip them.
 To use powerups, simply put the side you want to use facedown on the ground. You now have it on!
