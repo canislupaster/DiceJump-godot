@@ -3,7 +3,7 @@ extends Node
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var levels = ["Tests/PlayerTest.tscn"]
+var levels = ["1/Level.tscn"]
 
 var levelnum
 var levelnode
