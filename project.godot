@@ -17,8 +17,8 @@ config/icon="res://Assets/UI/Images/Icon/icon.png"
 
 [autoload]
 
-global="*res://Scripts/Global/global.gd"
-gamedata="*res://Scripts/Global/gamedata.gd"
+global="*res://Scripts/global.gd"
+gamedata="*res://Scripts/gamedata.gd"
 
 [editor_plugins]
 

@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/UI/Powerups/PowerupContainer.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/Powerup Chooser/PowerupContainer.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Loadout/Powerup/None.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/UI/Powerups/ForwardButtonPressNode.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/Powerup Chooser/ForwardButtonPressNode.gd" type="Script" id=3]
+
 
 [node name="Powerup Chooser" type="Control"]
 
