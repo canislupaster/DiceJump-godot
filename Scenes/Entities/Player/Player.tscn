@@ -317,6 +317,7 @@ disabled = false
 [node name="Powers" type="Node" parent="RigidBody" index="7"]
 
 script = ExtResource( 7 )
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="body_shape_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_shape_entered"]
 

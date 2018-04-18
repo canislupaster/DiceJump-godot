@@ -3,18 +3,16 @@
 [ext_resource path="res://Scenes/Decor/Game/Checkpoint/Checkpoint.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/Decor/Checkpoint/flag.tscn" type="PackedScene" id=2]
 
-
-
 [sub_resource type="CapsuleShape" id=1]
 
 radius = 8.60977
 height = 17.2596
 
-[node name="Checkpoint" type="Spatial"]
+[node name="Checkpoint" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="FlagGeo" type="Spatial" parent="." index="0" instance=ExtResource( 2 )]
+[node name="FlagGeo" parent="." index="0" instance=ExtResource( 2 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13022, 0 )
 _sections_unfolded = [ "Transform" ]

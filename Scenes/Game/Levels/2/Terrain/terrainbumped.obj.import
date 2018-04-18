@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/terrainbumped.obj-999113bcf13ce0f415f39831473f6536.mesh"
+
+[deps]
+
+files=[ "res://.import/terrainbumped.obj-999113bcf13ce0f415f39831473f6536.mesh" ]
+
+source_file="res://Scenes/Game/Levels/2/Terrain/terrainbumped.obj"
+source_md5="5c0be16a83ca483d0fbde5fe5d4fbc5d"
+
+dest_files=[ "res://.import/terrainbumped.obj-999113bcf13ce0f415f39831473f6536.mesh", "res://.import/terrainbumped.obj-999113bcf13ce0f415f39831473f6536.mesh" ]
+dest_md5="26d0bc8e595febf6a23080f03b3c6cc6"
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

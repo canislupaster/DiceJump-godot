@@ -3,12 +3,12 @@ extends Node
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var levels = ["1/Level.tscn"]
+var levels = ["1/Level.tscn", "2/Level.tscn"]
 
 var levelnum
 var levelnode
 
-var initial_transform
+export(Transform) var initial_transform setget set_initial_transform, get_initial_transform
 
 signal level_load(instance)
 signal level_done
@@ -59,10 +59,10 @@ func _level_load(l):
 	levelnode = l
 	
 	emit_signal("loadout_reload",loadout)
-	focus()
 
 func _level_done():
 	levelnum=levelnum+1
+	initial_transform = null
 	load_level(levelnum)
 
 func is_player_rb(rb):
@@ -85,6 +85,11 @@ func set_control_open(x):
 
 func get_control_open(): return control_open
 
+func get_initial_transform():
+	return initial_transform
+func set_initial_transform(x):
+	initial_transform = x
+
 func _ready():
 	for i in range(levels.size()):
 		levels[i] = "res://Scenes/Game/Levels/"+levels[i]
@@ -96,4 +101,8 @@ func _ready():
 	levelnum = gamedata.save["level"]
 	loadout = gamedata.save["loadout"]
 	
+	focus()
 	load_level(levelnum)
+	
+	if gamedata.save["transform"]:
+		initial_transform = gamedata.save["transform"]

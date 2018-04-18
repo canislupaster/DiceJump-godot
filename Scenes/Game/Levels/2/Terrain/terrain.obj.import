@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/terrain.obj-bdfdc27cac78ad409cfd45ef21dd2ab9.mesh"
+
+[deps]
+
+files=[ "res://.import/terrain.obj-bdfdc27cac78ad409cfd45ef21dd2ab9.mesh" ]
+
+source_file="res://Scenes/Game/Levels/2/Terrain/terrain.obj"
+source_md5="83f19c37b31bf73f07b3d30daf9acc64"
+
+dest_files=[ "res://.import/terrain.obj-bdfdc27cac78ad409cfd45ef21dd2ab9.mesh", "res://.import/terrain.obj-bdfdc27cac78ad409cfd45ef21dd2ab9.mesh" ]
+dest_md5="8ca00a1e9cdf0faf3fdd1c36c8a70ee6"
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

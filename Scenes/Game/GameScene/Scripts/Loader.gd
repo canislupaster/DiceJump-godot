@@ -1,10 +1,10 @@
 extends Control
 
-var loaderthread = Thread.new()
-
+onready var game = global.get_game()
 
 func intload(path):
 	visible = true
+	game.set_control_open(1)
 	
 	var loader = ResourceLoader.load_interactive(path)
 	var count = loader.get_stage_count()
@@ -18,10 +18,11 @@ func intload(path):
 	var instance = resource.instance()
 	global.get_game().emit_signal("level_load",instance)
 	
+	game.set_control_open(0)
 	visible = false
 
 func bgload(path):
-	loaderthread.start(self,"intload",path)
+	Thread.new().start(self,"intload",path)
 
 func _ready():
 	# Called every time the node is added to the scene.

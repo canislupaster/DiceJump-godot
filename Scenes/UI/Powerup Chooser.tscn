@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/Loadout/Powerup/None.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/Powerup Chooser/ForwardButtonPressNode.gd" type="Script" id=3]
 
-
 [node name="Powerup Chooser" type="Control"]
 
 visible = false
